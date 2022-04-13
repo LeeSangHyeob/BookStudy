@@ -1,1 +1,43 @@
+Item1. 생성자 대신 정적 팩토리 메서드를 고려하라
+1. 인스턴스 통제를 통해 싱글턴 혹은 인스턴스화 불가로 만들거나, 이름을 부여하여 직관적인 묘사가 가능
+2. 반환 타입의 하위 타입 객체를 반환
+  ex) public A(int a, int b) -> public static int sum(int a, int b)
+  
+Item2. 생성자에 매개변수가 많다면 빌더를 고려하라
+1. 필수 매개변수 생성자를 통해 빌더 객체를 얻고, 이후 원하는 매개변수를 set
+  ex) NutritionFacts cocaCola = new NutirtionFacts.Builder(240, 8).calories(100).sodium(35).carbohydrate(27).build();
+ 
+Item3. private 생성자나 열거 타입으로 싱글턴임을 보증하라
+1. 싱글턴 메서드 생성방법 3가지
+  1) public static final Elvis INSTANCE = new Elvis();
+     private Elvis(){}
+     
+  2) private static final Elvis INSTANCE = new Elvis();
+     private Elvis(){}
+     public static Elvis getInstance(){ return INSTANCE ;}
 
+  3) public enum Elvis {
+        INSTANCE;
+     }
+     
+Item4. 인스턴스화를 막으려거든 private 생성자를 사용하라
+1. private 생성자를 활용하면 인스턴스화를 막을 수 있음
+  1) 인스턴스화란??
+
+Item5. 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라
+1. 파라미터를 통해 생성자에 필요한 자원을 넘긴다
+
+Item6. 불필요한 객체 생성을 피하라
+1. 비용이 비싼 객체의 경우 캐싱하여 재사용할 것
+  ex) private static final Pattern ROMAN = ~~~
+      return ROMAN.matcher(s).matches();
+  
+Item7. 다 쓴 객체 참조를 해제하라
+1. 자기 메모리를 직접 관리하는 클래스의 경우, 메모리 누수 주의 (Stack, 캐시 등)
+  -> 참조한 객체들을 모두 null
+
+
+Item8. finalizer 와 cleaner 사용을 피하라
+
+Item9. try-finally 보다는 try-with-resources 를 사용하라
+1. try 중첩을 쓰지 않고 다수의 예외 처리 가능
