@@ -52,5 +52,17 @@ Item2. 생성자에 매개변수가 많다면 빌더를 고려하라
       (@AllArgsConstructor(access = AccessLevel.PRIVATE) 선언을 통해 방지)
     - 필수 파라미터를 알 수 없다는 단점이 존재
   4) 빌더 패턴 상속시 self() 를 이용하여 하위 객체 리턴을 적극 활용할 것
-  
-  
+
+Item3. 생성자나 열거 타입으로 싱글턴임을 보증하라
+1. 
+
+
+스태틱 메서드 레퍼런스
+인스턴스 메서드 레퍼런스
+임의 객체의 레퍼런스 메서드 레퍼런스
+생성자 레퍼런스
+Function
+Supplier
+Consumer
+Predicate
+
